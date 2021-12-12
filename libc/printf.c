@@ -66,6 +66,7 @@ int printf(const char* fmt, ...)
 //a
                 {
                     int hex = va_arg(list, int);
+               
                     print_hex(hex);
                     break;   
                 }

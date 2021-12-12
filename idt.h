@@ -91,12 +91,11 @@ void idt_init()
 }
 
 
-
-
+void inthandler(Registers *regs);
+int timerCount = 1;
 // EXCEPTION STUFF:
 void inthandler(Registers *regs)
 {
- 
     if(regs->int_no < 0x20){
         printf("Exception Caught: RIP -> %x || %s - %d : %x", regs->rip, exception_str[regs->int_no], regs->int_no, regs->error_code);
         asm volatile("cli; hlt");
@@ -107,12 +106,7 @@ void inthandler(Registers *regs)
         {
             case 0x20:
                 timerCount++;
-                if(timerCount == 18)
-                {
-                    timerSeconds++;
-                    timerCount = 0;
-                    
-                }
+                printf("Timer: %d", timerCount);
                 picSendEOI(0); 
                 break;
             case 0x20+7:

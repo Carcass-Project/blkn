@@ -39,10 +39,9 @@ void picInit()
     irqMaskAll();
     irqClearMask(0);
     irqClearMask(2);
-    
 }
 
-void irqSetMask(uint8_t IRQline)
+void irqSetMask(unsigned char IRQline)
 {
     //a
     uint16_t port;
@@ -58,7 +57,7 @@ void irqSetMask(uint8_t IRQline)
     outb(port, value);  
 }
 
-void irqClearMask(uint8_t IRQline)
+void irqClearMask(unsigned char IRQline)
 {
     uint16_t port;
     uint8_t value;
@@ -90,9 +89,8 @@ uint16_t picGetISR(void)
     return picGetIrqReg(PIC_READ_ISR);
 }
 
-void picSendEOI(uint8_t irq)
+void picSendEOI(unsigned char irq)
 {
-
     if(irq >= 8)
 		outb(PIC2_COMMAND, 0x20);
  
