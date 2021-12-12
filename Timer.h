@@ -1,5 +1,21 @@
 #include <stdint.h>
 
-static int TimerCount = 0;
+int timerCount;
+int timerSeconds;
 
-void CountTimerUp();//a
+void PIC_TimerSetup()
+{
+    timerCount = 0;
+    timerSeconds = 0;
+}
+
+void TimerCountUp()
+{
+    timerCount++;
+}
+
+void TimerSecondUp()
+{
+    timerSeconds++;
+}
+
