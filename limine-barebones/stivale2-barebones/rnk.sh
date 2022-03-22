@@ -1,0 +1,1 @@
+make && cd kernel && make && cd .. && qemu-system-x86_64 -cdrom disk.iso -smp 4 -M smm=off -d int -no-reboot
